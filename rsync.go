@@ -175,6 +175,9 @@ type RsyncOptions struct {
 	IPv4 bool
 	// ipv6
 	IPv6 bool
+
+	// Password file
+	PasswordFile string
 }
 
 // StdoutPipe returns a pipe that will be connected to the command's
@@ -522,6 +525,10 @@ func getArguments(options RsyncOptions) []string {
 
 	if options.Info != "" {
 		arguments = append(arguments, "--info", options.Info)
+	}
+
+	if options.PasswordFile != "" {
+		arguments = append(arguments, "--password-file", options.PasswordFile)
 	}
 
 	return arguments
