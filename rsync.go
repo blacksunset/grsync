@@ -178,6 +178,9 @@ type RsyncOptions struct {
 
 	// Password file
 	PasswordFile string
+
+	// Port
+	Port int
 }
 
 // StdoutPipe returns a pipe that will be connected to the command's
@@ -529,6 +532,10 @@ func getArguments(options RsyncOptions) []string {
 
 	if options.PasswordFile != "" {
 		arguments = append(arguments, "--password-file", options.PasswordFile)
+	}
+
+	if options.Port > 0 {
+		arguments = append(arguments, "--port", strconv.Itoa(options.Port))
 	}
 
 	return arguments
